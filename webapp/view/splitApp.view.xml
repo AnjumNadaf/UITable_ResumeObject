@@ -1,0 +1,44 @@
+<mvc:View
+	controllerName="uitable.controller.splitApp"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+
+
+	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+			<Page
+				id="detail"
+				title="Detail 1"
+				backgroundDesign= "Solid">
+				<Label text="Detail page 1" />
+				<!-- <Button text="Next" press="onLineChart"/> -->
+				<!-- <Button text="Go to Detail page2" press=".onPressNavToDetail" /> -->
+			</Page>
+			
+			
+		</detailPages>
+		<masterPages>
+			<Page
+				id="master"
+				title="Master 1"
+				backgroundDesign= "List">
+				<List id="listiddd" items="{myModel3P>/expensesSet}">
+					<items>
+					<ObjectListItem title="{myModel3P>Empid}"></ObjectListItem>
+					</items>
+				</List>
+			</Page>
+			
+		</masterPages>
+	</SplitApp>
+
+</mvc:View>
+

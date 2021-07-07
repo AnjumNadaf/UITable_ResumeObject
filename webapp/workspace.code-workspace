@@ -1,0 +1,36 @@
+{
+	"folders": [
+		{
+			"name": "uitable",
+			"path": ".."
+		},
+		{
+			"name": "project1",
+			"path": "..\\..\\project1"
+		},
+		{
+			"name": "chart",
+			"path": "..\\..\\chart"
+		},
+		{
+			"name": "projectevent",
+			"path": "..\\..\\projectevent"
+		},
+		{
+			"name": "listreport",
+			"path": "..\\..\\listreport"
+		},
+		{
+			"name": "sapui5app",
+			"path": "..\\..\\sapui5app"
+		},
+		{
+			"name": "appstate_1",
+			"path": "..\\..\\appstate_1"
+		},
+		{
+			"name": "appstate_2",
+			"path": "..\\..\\appstate_2"
+		}
+	]
+}

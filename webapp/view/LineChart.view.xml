@@ -1,0 +1,75 @@
+<mvc:View
+    controllerName="uitable.controller.LineChart"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:m="sap.m"
+	xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.suite.ui.commons"
+	
+>
+	
+		<!-- <App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+					
+					
+		
+				
+					
+					
+					</content>
+				</Page>
+			</pages>
+		</App> -->
+        	<layout:Splitter width="100%" height="100%">
+		<layout:contentAreas>
+			<ChartContainer
+				id="chartContainer"
+				showFullScreen="true"
+				showPersonalization="false"
+				autoAdjustHeight="false"
+				personalizationPress="attachPersonalizationPress"
+				contentChange="attachContentChange"
+				title="Revenue"
+                showZoom="true">
+				<content>
+					<ChartContainerContent
+						icon="sap-icon://line-chart"
+						title="Line Chart">
+						<content>
+                        
+							<viz:VizFrame id="chartContainerVizFrame" height="50%" width="50%"
+							              uiConfig="{applicationSet:'fiori'}" >
+                            <viz:dataset>
+                    <viz.data:FlattenedDataset data="{NModel>/Products}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Country"
+                                value="{NModel>Country}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                           
+                            <viz.data:MeasureDefinition name="Revenue"
+                                value="{NModel>Revenue}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Revenue" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Country" />
+                </viz:feeds>              
+                            </viz:VizFrame>
+						</content>
+					</ChartContainerContent>
+				</content>
+			</ChartContainer>
+		</layout:contentAreas>
+	</layout:Splitter>
+
+</mvc:View>

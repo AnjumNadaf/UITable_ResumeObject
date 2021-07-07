@@ -1,0 +1,446 @@
+<mvc:View
+    controllerName="uitable.controller.View1"
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+	xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+	xmlns:sf="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:chart="sap.suite.ui.commons"
+>
+	
+		<m:App id="app">
+			<m:pages>
+				<m:Page id="page" title="VizFrame Chart" >
+					<m:content>
+					 <m:ScrollContainer
+  id="scrollcontainer" height="100%">
+
+  
+						<Table id="table1"
+				rows= "{myModel>/expensesSet}"
+				selectionMode="MultiToggle"
+			    visibleRowCount="6"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="Products"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Button1" press="onOpenDialog1"/>
+						<m:Button text="Button2" press="onOpenDialog2"/>
+						<m:Button text="Add" press="onCreate"/>
+						<m:Button text="Edit" press="onEdit"/>
+						<m:Button text="Delete" press="onDelete"/>
+						<m:Button
+							icon="sap-icon://activities"
+							tooltip="show indices of selected items"
+							press="getSelectedIndices"/>
+						<m:Button
+							icon="sap-icon://activity-items"
+							tooltip="show context of latest selection item"
+							press="getContextByIndex"/>
+						<m:Button
+							icon="sap-icon://decline"
+							tooltip="clear selection"
+							press="clearSelection"/>
+						<m:Switch
+							state="true"
+							customTextOn="on"
+							customTextOff="off"
+							tooltip="enable select all items"
+							change="onSwitchChange"/>
+								<m:Button text="Next" press="onNext"/>
+								<m:Button text="Next" press="changeStatus"/>
+								<m:Button    icon="sap-icon://download" press="onExport" /> 
+								<m:Button text="ajaxCall" press="ajaxCall"/> 
+								<m:Button text="Excel Download" press="download"/>
+					</m:OverflowToolbar>
+				</extension>
+
+				<columns>
+					<Column width="11rem" filterProperty="Empid" sortProperty="Empid">
+						<m:Label text="Empid" />
+						<template>
+							<m:Text text="{myModel>Empid}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem"
+					filterProperty="Empfname"
+					defaultFilterOperator="EQ">
+						<m:Label text="Empfname" />
+						<template>
+							<m:Input value="{myModel>Empfname}"/>
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="End">
+						<m:Label text="Emplname" />
+						<template>
+							<m:Input value="{myModel>Emplname}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Emonth" />
+						<template>
+							<m:Input value="{myModel>Emonth}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Year" />
+						<template>
+							<m:Input value="{myModel>Eyear}" />
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Expenses" />
+						<template>
+							<m:Input value="{myModel>Expenses}.INR " />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Assets" />
+						<template>
+							<m:Input value="{myModel>Assets}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Expensestype" />
+						<template>
+							<m:Input value="{path:'myModel>Expensestype',formatter:'.formatter.changeStatus'}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Status" />
+						<template>
+							<m:Button text="Status" type="Accept" />
+						</template>
+					</Column>
+					
+					
+					
+					
+				</columns>
+			</Table>
+				<Table id="table12"
+				rows= "{myModel>/expensesSet}"
+				selectionMode="MultiToggle"
+			    visibleRowCount="6"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title2" text="Products"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Add" press="onCreate"/>
+						<m:Button text="Edit" press="onEdit"/>
+						<m:Button text="Delete" press="onDelete"/>
+						<m:Button
+							icon="sap-icon://activities"
+							tooltip="show indices of selected items"
+							press="getSelectedIndices"/>
+						<m:Button
+							icon="sap-icon://activity-items"
+							tooltip="show context of latest selection item"
+							press="getContextByIndex"/>
+						<m:Button
+							icon="sap-icon://decline"
+							tooltip="clear selection"
+							press="clearSelection"/>
+						<m:Switch
+							state="true"
+							customTextOn="on"
+							customTextOff="off"
+							tooltip="enable select all items"
+							change="onSwitchChange"/>
+								<m:Button text="Next" press="onNext"/>
+								<m:Button text="Next" press="changeStatus"/>
+								<m:Button    icon="sap-icon://download" press="onExport" /> 
+								<m:Button text="ajaxCall" press="ajaxCall"/> 
+					</m:OverflowToolbar>
+				</extension>
+
+				<columns>
+					<Column width="11rem" filterProperty="Empid" sortProperty="Empid">
+						<m:Label text="Empid" />
+						<template>
+							<m:Text text="{myModel>Empid}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem"
+					filterProperty="Empfname"
+					defaultFilterOperator="EQ">
+						<m:Label text="Empfname" />
+						<template>
+							<m:Input value="{myModel>Empfname}"/>
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="End">
+						<m:Label text="Emplname" />
+						<template>
+							<m:Input value="{myModel>Emplname}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Emonth" />
+						<template>
+							<m:Input value="{myModel>Emonth}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Year" />
+						<template>
+							<m:Input value="{myModel>Eyear}" />
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Expenses" />
+						<template>
+							<m:Input value="{myModel>Expenses}.INR " />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Assets" />
+						<template>
+							<m:Input value="{myModel>Assets}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Expensestype" />
+						<template>
+							<m:Input value="{path:'myModel>Expensestype',formatter:'.formatter.changeStatus'}" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Status" />
+						<template>
+							<m:Button text="Status" type="Accept" />
+						</template>
+					</Column>
+					
+					
+					
+					
+				</columns>
+			</Table>
+</m:ScrollContainer>
+
+<m:Panel class="panelStyle" expandable="true" expanded="true"
+headerText="Settings" id='settingsPanel2' width="auto">
+<m:content>
+<m:HBox class="sapUiSmallMarginBegin">
+<m:VBox class='settingsBox'>
+<m:Label design="Bold" text="valueLabel"></m:Label>
+<m:Switch change='onLabelChanged' state="true">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="axisTitleLabel"></m:Label>
+<m:Switch change='onAxisTitleChanged1' state="false">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="SwitchToBarChart"></m:Label>
+<m:Switch change='onChangetoBarChart' state="false">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+
+</m:HBox>
+</m:content>
+</m:Panel>
+
+
+<!-- <chart:ChartContainer autoAdjustHeight="true" id="chartContainer"  title="Reports">
+<chart:ChartContainerContent width="auto" height="auto" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+<chart:content> -->
+
+<viz:VizFrame id="idVizFrames" 
+                 width="auto" vizType='line' selectData="attachSelectData" visible="true"
+				  vizProperties="{title:{visible:true, text:'Line Chart'}}">
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{NModel>/Products}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Country"
+                                value="{myModel>Country}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                           <viz.data:MeasureDefinition name="Revenue"
+                                value="{myModel>Revenue}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeeds' uid="valueAxis" type="Measure"
+                        values="Revenue" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Country" />
+                </viz:feeds>
+            </viz:VizFrame>
+<!-- </chart:content>
+</chart:ChartContainerContent>
+</chart:ChartContainer> -->
+
+
+
+			<m:Panel class="panelStyle" expandable="true" expanded="true" headerText="Settings" id='settingsPanel' width="auto">
+<m:content>
+<m:HBox class="sapUiSmallMarginBegin">
+<m:VBox class='settingsBox'>
+<m:Label design="Bold" text="{i18n>valueLabel}"></m:Label>
+<m:Switch change='onDataLabelChanged' state="true">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="{i18n>sumValueLabel}"></m:Label>
+<m:Switch change='onSumLabelChanged' state="false">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="{i18n>axisTitleLabel}"></m:Label>
+<m:Switch change='onAxisTitleChanged' state="false">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="{i18n>stackedType}"></m:Label>
+<m:RadioButtonGroup select="onTypeSelected">
+<m:buttons>
+<m:RadioButton text="{i18n>regular}"/>
+<m:RadioButton text="{i18n>percentage}"/>
+</m:buttons>
+</m:RadioButtonGroup>
+</m:VBox>
+<m:VBox class="sapUiMediumMarginBegin">
+<m:Label design="Bold" text="SwitchToBarChart"></m:Label>
+<m:Switch change='onChangetoBar' state="false">
+<m:layoutData>
+<m:FlexItemData growFactor="1"/>
+</m:layoutData>
+</m:Switch>
+</m:VBox>
+<m:VBox>
+	<m:ComboBox id="filterData"
+				items="{
+					path: 'myModel>/expensesSet',
+					sorter: { path: 'Eyear' }
+				}" 
+				change="onFilter">
+				<core:Item key="{myModel>Eyear}" text="{myModel>Eyear}" />
+			</m:ComboBox>
+</m:VBox>
+</m:HBox>
+</m:content>
+</m:Panel>
+<viz:VizFrame id="idVizFrame" 
+                height='70%' width="70%" vizType='line' selectData="attachSelectData" visible="true" vizProperties="{title:{visible:true, text:'Line Chart'}}">
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{myModel>/expensesSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Eyear"
+                                value="{myModel>Eyear}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                           
+                            <viz.data:MeasureDefinition name="Expenses"
+                                value="{myModel>Expenses}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Expenses" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Eyear" />
+                </viz:feeds>
+            </viz:VizFrame>
+				<m:VBox fitContainer="true" alignItems="Start" justifyContent="Start">
+					<sf:SimpleForm editable="true" id="simpleformid" visible="false">
+					<m:VBox alignContent="Start" justifyContent="Start">
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input  id="eid" value="" placeholder="Enter Id" width="25rem"/>
+					</m:HBox>
+
+					
+
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="name" value="" placeholder="Enter Your Name"  width="25rem"/>
+					</m:HBox>
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="lname" value="" placeholder="Enter Last Name "  width="25rem"/>
+
+					</m:HBox>
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="cityid" value="" placeholder="Enter Designation"  width="25rem"/>
+					</m:HBox>
+
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="phonenum" value="" placeholder="Enter Expenses"  width="25rem"/>
+					</m:HBox>
+
+                  <m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="month" value="" placeholder=" Enter month"  width="25rem"/>
+					</m:HBox>
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="year" value="" placeholder="Enter Year"  width="25rem"/>
+					</m:HBox>
+
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="assets" value="" placeholder="Enter Assets"  width="25rem"/>
+					</m:HBox>
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					<m:Input id="ExpensesType" value="" placeholder="Enter ExpensesType"  width="25rem"/>
+					</m:HBox>
+
+					
+
+					
+
+					
+
+					<m:HBox alignContent="Start" justifyContent="Start">
+					
+				 
+				 <m:Button id="loginid2"  text="Create" press="onSave" width="5rem" visible="true"/>
+				 <m:Button id="loginid1"  text="Update" press="onUpdate" width="5rem" />
+				 <m:Button id="cancelbtn" text="Cancel" press="onCancel" width="5rem"/>
+					
+					
+					</m:HBox>
+					</m:VBox>
+					</sf:SimpleForm>
+					</m:VBox>
+					
+					</m:content>
+				</m:Page>
+			</m:pages>
+		</m:App>
+
+</mvc:View>
